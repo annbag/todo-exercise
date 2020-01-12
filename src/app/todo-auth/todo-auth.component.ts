@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 @Component({
     selector: 'app-todo-auth',
     templateUrl: './todo-auth.component.html',
-    styleUrls: ['./todo-auth.component.css']
+    styleUrls: ['./todo-auth.component.scss']
 })
 export class TodoAuthComponent implements OnInit {
     public password: string;

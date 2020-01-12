@@ -1,31 +1,34 @@
-<div class="tasks" *ngIf='user'>
-  <h2>Lista zadań:</h2>
-  <div *ngFor="let task of tasks; let i = index">
-      <p>-----</p>
-      <p> kategoria: {{task.category}}</p>
-      <p> nazwa: {{task.name}}</p>
-      <p> zakończone: <input type="checkbox" name="finished" [checked]="task.finished"
-              (click)="toggleFinishedTask(i, task.finished)" /></p>
-      <p> kolejność: {{task.order}}</p>
-  </div>
-  <button (click)=addNewTask()>New task</button>
-  <form *ngIf='isVisibleForm'>
-      <div>
-          <label for="category">Kategoria</label>
-          <input [(ngModel)]="todoData.category" type="text" name="category">
-      </div>
-      <div>
-          <label for="name">Nazwa</label>
-          <input [(ngModel)]="todoData.name" type="text" name="name">
-      </div>
-      <div>
-          <label for="finished">Zakończone</label>
-          <input [(ngModel)]="todoData.finished" type="checkbox" name="finished">
-      </div>
-      <div>
-          <label for="order">kolejność</label>
-          <input [(ngModel)]="todoData.order" type="text" name="order">
-      </div>
-      <button type="submit" (click)=addTask()>Add Task</button>
-  </form>
+<div class="tasks-container container" *ngIf='user'>
+    <h1 class="title">Lista zadań:</h1>
+    <div class="tasks">
+        <div class="task" *ngFor="let task of tasks; let i = index">
+            <p>{{task.name}}</p>
+            <label class="checkbox-container">
+                <input type="checkbox" [checked]="task.finished" (click)="toggleFinishedTask(i, task.finished)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <button class="btn btn-new-task" (click)=addNewTask()>New task</button>
+    <form *ngIf='isVisibleForm' class="new-task-form">
+        <div class="input-container">
+            <label for="category" class="input-title">Kategoria</label>
+            <input class="input" [(ngModel)]="todoData.category" type="text" name="category">
+        </div>
+        <div class="input-container">
+            <label for="name" class="input-title">Nazwa</label>
+            <input class="input" [(ngModel)]="todoData.name" type="text" name="name">
+        </div>
+        <div class="input-container finished-task">
+            <label class="checkbox-container input-title">Zakończone
+                <input [(ngModel)]="todoData.finished" type="checkbox" name="finished">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="input-container">
+            <label for="order" class="input-title">kolejność</label>
+            <input class="input" [(ngModel)]="todoData.order" type="text" name="order">
+        </div>
+        <button class="btn btn-add-task" type="submit" (click)=addTask()>Add Task</button>
+    </form>
 </div>

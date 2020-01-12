@@ -1,20 +1,23 @@
-<div *ngIf='!user'>
-  <form>
-      <div>
-          <label for="email">
-              Email:
-          </label>
-          <input [(ngModel)]="email" id="email" type="email" name="email">
-      </div>
-      <div>
-          <label for="password">
-              Password:
-          </label>
-          <input [(ngModel)]="password" id="password" type="text" name="password">
-      </div>
-      <button type="submit" (click)=onLogin()>Log in</button>
-  </form>
-</div>
-<div *ngIf='user'>
-  <button (click)=onLogout()>Log out</button>
+<div class="auth">
+    <div class="container auth-container">
+        <form class="auth-form" *ngIf='!user'>
+            <div class="input-container">
+                <label for="email" class="input-title">
+                    Email:
+                </label>
+                <input class="input" [(ngModel)]="email" type="email" name="email"/>
+            </div>
+            <div class="input-container">
+                <label for="password" class="input-title">
+                    Password:
+                </label>
+                <input class="input" [(ngModel)]="password" type="text" name="password"/>
+            </div>
+            <button type="submit" class="btn" (click)=onLogin()>Log in</button>
+        </form>
+        <div *ngIf='user'>
+            <button class="btn" (click)=onLogout()>Log out</button>
+        </div>
+    </div>
+
 </div>

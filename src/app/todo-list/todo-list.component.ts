@@ -7,13 +7,13 @@ import * as firebase from 'firebase/app';
 @Component({
     selector: 'app-todo-list',
     templateUrl: './todo-list.component.html',
-    styleUrls: ['./todo-list.component.css']
+    styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
     public isVisibleForm = false;
     public todoData = new TodoForm();
 
-    @Input() user: firebase.User
+    @Input() user: firebase.User;
     @Input() tasks: ITodoForm[];
 
     constructor() { }
@@ -41,7 +41,6 @@ export class TodoListComponent implements OnInit {
         console.log(index, !isFinished);
         firebase.database().ref(`users/${this.user.uid}/todoTasks/${index}/finished`).set(!isFinished);
     }
-
 }
 class TodoForm {
     constructor(

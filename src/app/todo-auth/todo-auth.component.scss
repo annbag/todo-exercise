@@ -1,0 +1,35 @@
+:host {
+    .auth {
+        height: 74px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background: linear-gradient(
+        to right,
+        rgb(255, 164, 122) 0%,
+        rgb(219, 55, 69) 100%
+        );
+        .auth-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            .auth-form {
+                margin-bottom: 17px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                .input-container {
+                    margin: 0 10px;
+                    .input-title {
+                        color: #ffffff;
+                    }
+                    .input {
+                        border: 1px solid #ffffff;
+                        height: 37px;
+                        width: 180px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+:host {
+    .tasks-container {
+        .title {
+            margin: 15px 0 10px;
+            text-align: left;
+        }
+        .tasks {
+            display: flex;
+            flex-direction: column;
+            .task {
+                margin: 5px 0;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                width: 70%;
+                min-width: 280px;
+                background-image: linear-gradient(
+                to right,
+                rgb(255, 164, 122) 0%,
+                rgb(219, 55, 69) 100%
+                );
+            }
+        }
+        .btn-new-task {
+            margin: 20px 0;
+        }
+        .new-task-form {
+            margin: 10px 0;
+            .input-container {
+                .input-title {
+                    color: grey;
+                }
+                .input {
+                    margin-bottom: 20px;
+                    border: 1px solid grey;
+                    width: 240px;
+                }
+            }
+            .finished-task {
+                position: relative;
+                margin-bottom: 30px;
+                .checkbox-container {
+                  .checkmark {
+                    left: 100px;
+                  }
+                }
+            }
+            .btn-add-task {
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
