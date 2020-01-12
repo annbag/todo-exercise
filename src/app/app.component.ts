@@ -1,7 +1,8 @@
+import { ITodoForm } from './interfaces/itodo-form';
 import 'firebase/auth';
 import 'firebase/database';
 
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase/app';
 @Component({
     selector: 'app-root',
@@ -10,8 +11,9 @@ import * as firebase from 'firebase/app';
 })
 export class AppComponent implements OnInit {
     public user;
-    public tasks;
-    public authData = new AuthForm();
+    public tasks: ITodoForm[];
+    public password: string;
+    public email: string;
     public todoData = new TodoForm();
     public isVisibleForm = false;
     private dbRefList: firebase.database.Reference;
@@ -37,7 +39,7 @@ export class AppComponent implements OnInit {
         if (this.user) {
             this.dbRefList = firebase.database().ref('/users/' + this.user.uid);
             this.dbRefList.on('value', snapshot => {
-                this.tasks = snapshot.val();
+                this.tasks = snapshot.val().todoTasks;
                 console.log('Moja baza:', this.tasks);
             });
         } else if (this.dbRefList) {
@@ -47,7 +49,7 @@ export class AppComponent implements OnInit {
     }
 
     onLogin() {
-        firebase.auth().signInWithEmailAndPassword(this.authData.email, this.authData.password);
+        firebase.auth().signInWithEmailAndPassword(this.email, this.password);
     }
 
     onLogout() {
@@ -59,9 +61,9 @@ export class AppComponent implements OnInit {
     }
 
     addTask() {
-        const dbRefList = firebase.database().ref('/users/' + this.user.uid).child('todoTask');
-        console.log(this.todoData, this.tasks.todoTask.length);
-        dbRefList.update({ [this.tasks.todoTask.length]: this.todoData });
+        const dbRefList = firebase.database().ref('/users/' + this.user.uid).child('todoTasks');
+        console.log(this.todoData, this.tasks.length);
+        dbRefList.update({ [this.tasks.length]: this.todoData });
 
         this.todoData.category = '';
         this.todoData.name = '';
@@ -72,15 +74,10 @@ export class AppComponent implements OnInit {
 
     toggleFinishedTask(index: number, isFinished: boolean) {
         console.log(index, !isFinished);
-        firebase.database().ref(`users/${this.user.uid}/todoTask/${index}/finished`).set(!isFinished);
+        firebase.database().ref(`users/${this.user.uid}/todoTasks/${index}/finished`).set(!isFinished);
     }
 }
-class AuthForm {
-    constructor(
-        public email: string = 'hdsjfh@asd.afa',
-        public password: string = '123456',
-    ) { }
-}
+
 class TodoForm {
     constructor(
         public category?: string,

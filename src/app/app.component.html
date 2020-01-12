@@ -4,13 +4,13 @@
             <label for="email">
                 Email:
             </label>
-            <input [(ngModel)]="authData.email" id="email" type="email" name="email">
+            <input [(ngModel)]="email" id="email" type="email" name="email">
         </div>
         <div>
             <label for="password">
                 Password:
             </label>
-            <input [(ngModel)]="authData.password" id="password" type="text" name="password">
+            <input [(ngModel)]="password" id="password" type="text" name="password">
         </div>
         <button type="submit" (click)=onLogin()>Log in</button>
     </form>
@@ -21,7 +21,7 @@
 
 <div class="tasks" *ngIf='user'>
     <h2>Lista zadań:</h2>
-    <div *ngFor="let task of tasks?.todoTask; let i = index">
+    <div *ngFor="let task of tasks; let i = index">
         <p>-----</p>
         <p> kategoria: {{task.category}}</p>
         <p> nazwa: {{task.name}}</p>
