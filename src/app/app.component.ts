@@ -10,12 +10,9 @@ import * as firebase from 'firebase/app';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
     public user;
     public tasks: ITodoForm[];
-    public password: string;
-    public email: string;
-    public todoData = new TodoForm();
-    public isVisibleForm = false;
     private dbRefList: firebase.database.Reference;
 
     ngOnInit() {
@@ -47,42 +44,6 @@ export class AppComponent implements OnInit {
             this.tasks = [];
         }
     }
-
-    onLogin() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password);
-    }
-
-    onLogout() {
-        firebase.auth().signOut();
-    }
-
-    addNewTask() {
-        this.isVisibleForm = !this.isVisibleForm;
-    }
-
-    addTask() {
-        const dbRefList = firebase.database().ref('/users/' + this.user.uid).child('todoTasks');
-        console.log(this.todoData, this.tasks.length);
-        dbRefList.update({ [this.tasks.length]: this.todoData });
-
-        this.todoData.category = '';
-        this.todoData.name = '';
-        this.todoData.finished = false;
-        this.todoData.order = null;
-        this.isVisibleForm = false;
-    }
-
-    toggleFinishedTask(index: number, isFinished: boolean) {
-        console.log(index, !isFinished);
-        firebase.database().ref(`users/${this.user.uid}/todoTasks/${index}/finished`).set(!isFinished);
-    }
 }
 
-class TodoForm {
-    constructor(
-        public category?: string,
-        public name?: string,
-        public finished: boolean = false,
-        public order?: number
-    ) { }
-}
+

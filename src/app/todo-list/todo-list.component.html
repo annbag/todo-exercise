@@ -1,0 +1,31 @@
+<div class="tasks" *ngIf='user'>
+  <h2>Lista zadań:</h2>
+  <div *ngFor="let task of tasks; let i = index">
+      <p>-----</p>
+      <p> kategoria: {{task.category}}</p>
+      <p> nazwa: {{task.name}}</p>
+      <p> zakończone: <input type="checkbox" name="finished" [checked]="task.finished"
+              (click)="toggleFinishedTask(i, task.finished)" /></p>
+      <p> kolejność: {{task.order}}</p>
+  </div>
+  <button (click)=addNewTask()>New task</button>
+  <form *ngIf='isVisibleForm'>
+      <div>
+          <label for="category">Kategoria</label>
+          <input [(ngModel)]="todoData.category" type="text" name="category">
+      </div>
+      <div>
+          <label for="name">Nazwa</label>
+          <input [(ngModel)]="todoData.name" type="text" name="name">
+      </div>
+      <div>
+          <label for="finished">Zakończone</label>
+          <input [(ngModel)]="todoData.finished" type="checkbox" name="finished">
+      </div>
+      <div>
+          <label for="order">kolejność</label>
+          <input [(ngModel)]="todoData.order" type="text" name="order">
+      </div>
+      <button type="submit" (click)=addTask()>Add Task</button>
+  </form>
+</div>
