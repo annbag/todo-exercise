@@ -41,6 +41,11 @@ export class TodoListComponent implements OnInit {
         console.log(index, !isFinished);
         firebase.database().ref(`users/${this.user.uid}/todoTasks/${index}/finished`).set(!isFinished);
     }
+
+    removeTask(index: number) {
+        console.log(index)
+        firebase.database().ref(`users/${this.user.uid}/todoTasks/${index}/`).remove();
+    }
 }
 class TodoForm {
     constructor(

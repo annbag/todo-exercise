@@ -14,12 +14,26 @@
                 background-image: linear-gradient(to right, rgb(255, 164, 122) 0%, rgb(219, 55, 69) 100%);
             }
             .task {
+                position: relative;
                 margin: 5px 0;
                 padding: 10px;
                 display: flex;
                 justify-content: space-between;
                 width: 70%;
                 min-width: 280px;
+                .cross-btn {
+                   position: absolute;
+                   top: 6px;
+                   right: 10px;
+                   display: flex;
+                   justify-content: center;
+                   align-items: center;                     
+                   border: none;
+                   border-radius: 50%;
+                   background-color: #d91918;
+                   padding: 5px;
+                   cursor: pointer;
+                }
             }
         }
         .btn-new-task {

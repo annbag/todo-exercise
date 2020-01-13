@@ -8,6 +8,7 @@
                 <input type="checkbox" [checked]="task.finished" (click)="toggleFinishedTask(i, task.finished)">
                 <span class="checkmark"></span>
             </label>
+            <button class="cross-btn" (click)=removeTask(i)><img src="./assets/icon-cross.svg" alt="cross"></button>
         </div>
     </div>
     <button class="btn btn-new-task" (click)=addNewTask()>New task</button>
