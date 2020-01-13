@@ -7,6 +7,12 @@
         .tasks {
             display: flex;
             flex-direction: column;
+            .finished {
+                background-image: linear-gradient(to right, rgb(44, 211, 108) 0%, rgb(4, 131, 61) 100%);
+            }
+            .unfinished {
+                background-image: linear-gradient(to right, rgb(255, 164, 122) 0%, rgb(219, 55, 69) 100%);
+            }
             .task {
                 margin: 5px 0;
                 padding: 10px;
@@ -14,11 +20,6 @@
                 justify-content: space-between;
                 width: 70%;
                 min-width: 280px;
-                background-image: linear-gradient(
-                to right,
-                rgb(255, 164, 122) 0%,
-                rgb(219, 55, 69) 100%
-                );
             }
         }
         .btn-new-task {
@@ -40,9 +41,9 @@
                 position: relative;
                 margin-bottom: 30px;
                 .checkbox-container {
-                  .checkmark {
-                    left: 100px;
-                  }
+                    .checkmark {
+                        left: 100px;
+                    }
                 }
             }
             .btn-add-task {
