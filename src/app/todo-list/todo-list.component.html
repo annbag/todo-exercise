@@ -1,8 +1,8 @@
 <div class="tasks-container container" *ngIf='user'>
     <h1 class="title">Lista zadań:</h1>
     <div class="tasks">
-        <div class="task" [ngClass]="{finished: task.finished, unfinished: !task.finished}" 
-            *ngFor="let task of tasks  | filterEmpty; let i = index">
+        <div class="task" [ngClass]="{'finished': task.finished, 'unfinished': !task.finished}"
+            *ngFor="let task of tasks | filterEmpty; let i = index">
             <p>{{task.name}}</p>
             <label class="checkbox-container">
                 <input type="checkbox" [checked]="task.finished" (click)="toggleFinishedTask(i, task.finished)">
