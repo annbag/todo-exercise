@@ -1,6 +1,6 @@
-<div class="auth">
+<div class="auth" *ngIf="isShouldDisplay">
     <div class="container auth-container">
-        <form class="auth-form" *ngIf='!user'>
+        <form class="auth-form">
             <div class="input-container">
                 <label for="email" class="input-title">
                     Email:
@@ -15,9 +15,6 @@
             </div>
             <button type="submit" class="btn" (click)=onLogin()>Log in</button>
         </form>
-        <div *ngIf='user'>
-            <button class="btn" (click)=onLogout()>Log out</button>
-        </div>
     </div>
 
 </div>
