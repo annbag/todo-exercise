@@ -11,13 +11,13 @@ export class AuthComponent implements OnInit {
     public password: string;
     public email: string;
 
-    public isShouldDisplay = true;
+    public isShouldDisplay = false;
 
     constructor(private user: UserService) { }
 
     ngOnInit() {
         this.user.user$.subscribe({
-            next(status) {
+            next: (status) => {
                 console.log('user status has changed', status);
                 this.isShouldDisplay = !status;
                 // console.log(this.isShouldDisplay);
